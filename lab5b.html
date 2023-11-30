@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Details</title>
+</head>
+<body>
+
+<h1>Book Details</h1>
+
+<div id="bookDetails">
+  <p><strong>(a) Title of the first book:</strong> <span id="firstBookTitle"></span></p>
+  <p><strong>(b) Author of the second book:</strong> <span id="secondBookAuthor"></span></p>
+  <p><strong>(c) Genres of all books:</strong></p>
+  <ul id="allGenres"></ul>
+</div>
+
+<script>
+  // JSON data representing the collection of books
+  const booksData = [
+    {
+      "Book": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "publicationYear": 1925,
+      "genres": ["Fiction", "Classics"]
+    },
+    {
+      "Book": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "publicationYear": 1960,
+      "genres": ["Fiction", "Coming-of-Age"]
+    }
+  ];
+
+  // Extracting and displaying details
+  document.getElementById('firstBookTitle').innerText = booksData[0].title;
+  document.getElementById('secondBookAuthor').innerText = booksData[1].author;
+
+  const allGenres = document.getElementById('allGenres');
+  booksData.forEach(book => {
+    book.genres.forEach(genre => {
+      const li = document.createElement('li');
+      li.textContent = genre;
+      allGenres.appendChild(li);
+    });
+  });
+
+   // Displaying the requested details in the console
+    console.log("(a) The title of the first book:", booksData[0].title);
+    console.log("(b) The author of the second book:", booksData[1].author);
+    console.log("(c) The genres of all books:", booksData.map(book => book.genres).flat());
+</script>
+
+</body>
+</html>
